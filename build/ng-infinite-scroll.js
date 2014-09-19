@@ -107,7 +107,7 @@ mod.directive('infiniteScroll', [
           };
         };
         if (THROTTLE_MILLISECONDS != null) {
-          handler = throttle(handler, THROTTLE_MILLISECONDS);
+          // handler = throttle(handler, THROTTLE_MILLISECONDS);
         }
         scope.$on('$destroy', function() {
           return container.off('scroll', handler);
