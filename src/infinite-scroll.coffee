@@ -98,8 +98,6 @@ mod.directive 'infiniteScroll', ['$rootScope', '$window', '$timeout', 'THROTTLE_
           func.call()
         else timeout = $timeout(later, remaining) unless timeout
 
-    if THROTTLE_MILLISECONDS?
-      handler = throttle(handler, THROTTLE_MILLISECONDS)
 
     scope.$on '$destroy', ->
       container.off 'scroll', handler
