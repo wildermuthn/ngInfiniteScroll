@@ -110,8 +110,6 @@ mod.directive('infiniteScroll', [
           handler = throttle(handler, THROTTLE_MILLISECONDS);
         }
         scope.$on('$destroy', function() {
-          container.off('touchstart', handler);
-          container.off('touchmove', handler);
           container.off('touchend', handler);
           return container.off('scroll', handler);
         });
@@ -136,15 +134,11 @@ mod.directive('infiniteScroll', [
         handleInfiniteScrollUseDocumentBottom(scope.infiniteScrollUseDocumentBottom);
         changeContainer = function(newContainer) {
           if (container != null) {
-            container.off('touchstart', handler);
-            container.off('touchmove', handler);
             container.off('touchend', handler);
             container.off('scroll', handler);
           }
           container = typeof newContainer.last === 'function' && newContainer !== windowElement ? newContainer.last() : newContainer;
           if (newContainer != null) {
-            container.on('touchstart', handler);
-            container.on('touchmove', handler);
             container.on('touchend', handler);
             return container.on('scroll', handler);
           }
